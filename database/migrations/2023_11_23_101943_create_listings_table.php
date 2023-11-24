@@ -22,6 +22,8 @@ return new class extends Migration
             $table->tinyText('street');
             $table->tinyText('street_nr');
 
+            $table->unsignedInteger('price');
+
             $table->timestamps();
         });
     }
