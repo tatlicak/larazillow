@@ -15,9 +15,9 @@ class ListingController extends Controller
         return inertia(
             'Listing/Index',
             [
-                'listings'=> Listing::all()
-                ]
-            );
+                'listings' => Listing::all()
+            ]
+        );
     }
 
     /**
@@ -27,7 +27,7 @@ class ListingController extends Controller
     {
         return inertia(
             'Listing/Create'
-            );
+        );
     }
 
     /**
@@ -35,7 +35,10 @@ class ListingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Listing::create($request->all());
+
+        return redirect()->route('listing.index')
+            ->with('success', 'Listing was created');
     }
 
     /**
@@ -46,9 +49,9 @@ class ListingController extends Controller
         return inertia(
             'Listing/Show',
             [
-                'listing'=> $listing
-                ]
-            );
+                'listing' => $listing
+            ]
+        );
     }
 
     /**
