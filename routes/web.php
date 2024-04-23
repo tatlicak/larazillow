@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\ListingController;
 
@@ -18,3 +19,7 @@ use App\Http\Controllers\ListingController;
  Route::get('show', [IndexController::class,'show'])->name('show');
 
  Route::resource('listing', ListingController::class);
+
+ Route::get('login', [AuthController::class, 'create'])->name('login');
+ Route::post('login', [AuthController::class, 'store'])->name('store');
+Route::get('logout', [AuthController::class, 'destroy'])->name('logout');
