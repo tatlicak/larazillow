@@ -18,8 +18,8 @@ use App\Http\Controllers\ListingController;
  Route::get('/', [IndexController::class,'index'])->name('index');
  Route::get('show', [IndexController::class,'show'])->name('show');
 
- Route::resource('listing', ListingController::class);
-
+ Route::resource('listing', ListingController::class)->middleware('auth')->except(['index','show']);
+ Route::resource('listing', ListingController::class)->only(['index','show']);
  Route::get('login', [AuthController::class, 'create'])->name('login');
  Route::post('login', [AuthController::class, 'store'])->name('login.store');
 Route::delete('logout', [AuthController::class, 'destroy'])->name('logout');
