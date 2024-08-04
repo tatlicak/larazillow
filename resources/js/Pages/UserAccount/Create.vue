@@ -25,11 +25,11 @@
             <div class="mt-4">
 
                 <label for="password_confirmation" class="label"> Password Confirmation</label>
-                <input id="password_confirmation" v-model="form.password" type="password" class="input" />
+                <input id="password_confirmation" v-model="form.password_confirmation" type="password" class="input" />
 
             </div>
             <div class="mt-4">
-                <button class="btn-primary w-full" type="submit">Login</button>
+                <button class="btn-primary w-full" type="submit">Create</button>
             </div>
         </div>
     </form>
@@ -46,6 +46,6 @@ const form = useForm({
     password_confirmation: null,
 })
 
-const register = () => form.post('');
+const register = () => form.post(route('user-account.store'));
 
 </script>
