@@ -22,7 +22,7 @@ class UserAccountController extends Controller
                 'password'=>'required|min:8|confirmed'
             ])
             ) ;
-            
+            // modelde cast ile password hash yapılması gerektiği için burada hash yapılmadı.
             Auth::login($user);
         
             return redirect()->route('listing.index')->with('success','Account created!');
