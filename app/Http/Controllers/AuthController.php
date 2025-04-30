@@ -15,11 +15,13 @@ class AuthController extends Controller
 
     public function store(Request $request)
     {
+        $validated = $request->validate([
+            'email' => 'required|string|email',
+            'password' => 'required|string'
+        ]);
         
-        $isAuth = Auth::attempt($request -> validate([
-            'email'=>'required|string|email',
-            'password'=> 'required|string'
-        ]), true);
+        
+        $isAuth = Auth::attempt($validated, true);
 
         if(!$isAuth) {
             throw ValidationException::withMessages([

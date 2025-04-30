@@ -4,10 +4,23 @@ namespace App\Policies;
 
 use App\Models\Listing;
 use App\Models\User;
+use Illuminate\Auth\Access\HandlesAuthorization;
 use Illuminate\Auth\Access\Response;
 
 class ListingPolicy
 {
+    use HandlesAuthorization;
+    /**
+     * Determine whether the user is an admin.
+     */
+    public function before(?User $user,$ability)
+    {
+        if ($user?->is_admin) {
+            return true;
+        }
+    }
+    
+    
     /**
      * Determine whether the user can view any models.
      */
